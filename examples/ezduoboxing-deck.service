@@ -1,0 +1,14 @@
+[Unit]
+Description=EZDuoboxing Deck sender
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=%h/EZDuoboxing
+ExecStart=/usr/bin/python3 -u %h/EZDuoboxing/deck_sender.py --config %h/EZDuoboxing/config.local.py --input-source native --grips --touchpads pressure
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=5
+
+[Install]
+WantedBy=default.target
